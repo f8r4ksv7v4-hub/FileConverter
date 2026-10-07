@@ -50,10 +50,20 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 - 问题反馈：请在 [Issues](https://github.com/f8r4ksv7v4-hub/FileConverter/issues) 提交
 - 如果你喜欢这个应用，可以通过 [爱发电](https://afdian.com/a/xzy_projects) 或 [GitHub Sponsors](https://github.com/sponsors/f8r4ksv7v4-hub) 支持作者
 
+## Windows 版
+
+Windows 版（Electron）已发布，设计与功能与 macOS 版保持一致：悬浮球拖拽格式轮盘、图片/音视频格式互转、PDF 合并、图片工具（裁剪 / 加背景 / 涂黑标记 / 多水印 / 色彩调整）、中英双语、自动更新。
+
+- **下载**：[FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)（约 185MB）
+- **使用**：解压后双击 `FileConverter.exe` 即可运行，无需安装
+- **系统要求**：Windows 10 / 11（64 位）
+
+> 首次运行时 Windows SmartScreen 可能提示「Windows 已保护你的电脑」，点击「更多信息」→「仍要运行」即可。应用未签名，属正常提示；如不放心可先核对下载文件的哈希值。
+
 ## 环境要求
 
-- macOS 13 或更高版本
-- Apple Silicon 或 Intel Mac
+- macOS 13 或更高版本（Apple Silicon 或 Intel Mac）
+- Windows 10 / 11（64 位）
 
 ## License
 
