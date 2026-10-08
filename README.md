@@ -52,9 +52,10 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 ## Windows 版
 
-Windows 版（Electron）已发布，设计与功能与 macOS 版保持一致：悬浮球拖拽格式轮盘、图片/音视频格式互转、文档转 PDF（docx / md / txt / html / xlsx）、PDF 转文档（txt / docx，文本级）、PDF 合并、图片工具（裁剪 / 加背景 / 涂黑标记 / 多水印 / 色彩调整）、中英双语、自动更新。pptx→PDF 暂未支持（无可靠纯 JS 方案，规划中）。
+Windows 版（Electron）已发布，设计与功能与 macOS 版保持一致：悬浮球拖拽格式轮盘、图片/音视频格式互转、文档转 PDF（docx / md / txt / html / xlsx）、PDF 转文档（txt / docx / md，文本级）、文档转 Markdown（docx / txt / html / pdf → md，文本级）、PDF 合并、图片工具（裁剪 / 加背景 / 涂黑标记 / 多水印 / 色彩调整）、中英双语、自动更新。pptx→PDF 暂未支持（无可靠纯 JS 方案，规划中）。
 
-- **下载**：[FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)（约 185MB）
+- **下载（主页直链）**：[FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/raw/main/FileConverter-Windows-v1.0-win32-x64.zip)（约 200MB，仓库主页即可找到）
+- **下载（Release）**：[FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)
 - **使用**：解压后双击 `FileConverter.exe` 即可运行，无需安装
 - **系统要求**：Windows 10 / 11（64 位）
 
