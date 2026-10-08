@@ -85,3 +85,81 @@ Windows 版（Electron）已发布，设计与功能与 macOS 版保持一致：
 ## License
 
 MIT
+
+---
+
+## English Documentation
+
+### FileConverter
+
+FileConverter is a local file conversion tool for macOS, built with SwiftUI + AppKit. All conversions happen entirely on your device — nothing is uploaded to the cloud, so your files stay private.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-01.jpg" alt="FileConverter" width="720">
+</p>
+
+#### Features
+
+- **Format Conversion**: Drag files onto the desktop floating wheel and pick a target format. Supports common document, image, audio and video formats.
+- **Image Tools**: Crop, add background, redact (rectangle / freehand / eraser), add multiple draggable watermarks, adjust colors.
+- **PDF Merge**: Drag multiple PDFs and merge them into a single file.
+- **Bilingual UI**: Switch between 中文 and English instantly.
+- **Floating Ball Interaction**: A desktop floating dot expands into a conversion wheel when you drag a convertible file onto it.
+- **Auto Update**: Automatically checks GitHub Releases and installs new versions.
+
+#### First Launch Notice (Important)
+
+The app is signed with an **ad-hoc signature** (not notarized with an Apple Developer ID). On first launch, macOS Gatekeeper may block it with a "can't be opened" or "unidentified developer" warning. This is a normal prompt for unnotarized apps.
+
+**Option 1 (Recommended): Open via right-click**
+
+1. Locate `FileConverter.app` in Finder (do not use Launchpad).
+2. **Control-click** (or right-click) the app icon.
+3. Choose **Open** from the context menu.
+4. Click **Open** again to confirm.
+
+The app will then be saved as a security exception and can be launched normally afterward.
+
+**Option 2: Allow in System Settings**
+
+1. Try double-clicking the app once (it will be blocked).
+2. Open **System Settings → Privacy & Security**, scroll to the **Security** section.
+3. Click the **Open Anyway** button (available within one hour after the blocked attempt).
+4. Enter your password and click **OK**.
+
+The app will be added to the security exceptions and can be opened normally afterwards.
+
+> These steps follow [Apple's official documentation](https://support.apple.com/zh-cn/guide/mac-help/mchleab3a043/mac). If you have any security concerns, feel free to report them via Issues.
+
+#### Usage
+
+1. After launching, the main window opens and a floating dot appears on the desktop.
+2. **Open main window**: Menu bar → File → New Window.
+3. Drag a file onto the floating ball to expand the conversion wheel.
+4. Pick a target format or tool to convert.
+5. Click the floating ball after conversion to open the output folder.
+
+#### Support & Feedback
+
+- Bug reports / feedback: [GitHub Issues](https://github.com/f8r4ksv7v4-hub/FileConverter/issues)
+- If you like this app, consider supporting the author via [爱发电](https://afdian.com/a/xzy_projects) or [GitHub Sponsors](https://github.com/sponsors/f8r4ksv7v4-hub)
+
+#### Windows Version
+
+A Windows version (Electron) is available with feature parity: floating ball wheel, image/audio/video conversion, document to PDF (docx / md / txt / html / xlsx), PDF to text/docx/md (text-based), document to Markdown (docx / txt / html / pdf, text-based), PDF merge, image tools (crop / background / redact / multi-watermark / color adjust), bilingual UI, and auto update. pptx→PDF is not yet supported (no reliable pure-JS solution; planned).
+
+- **Direct download (repo page)**: [FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/raw/main/FileConverter-Windows-v1.0-win32-x64.zip) (~200 MB)
+- **Release download**: [FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)
+- **Usage**: Unzip and double-click `FileConverter.exe` — no installation needed.
+- **System requirements**: Windows 10 / 11 (64-bit)
+
+> On first run, Windows SmartScreen may show "Windows protected your PC" — click "More info" → "Run anyway". The app is unsigned; this is a normal prompt. You may verify the file hash if concerned.
+
+#### Environment Requirements
+
+- macOS 13 or later (Apple Silicon or Intel Mac)
+- Windows 10 / 11 (64-bit)
+
+#### License
+
+MIT
