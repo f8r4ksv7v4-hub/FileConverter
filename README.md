@@ -3,19 +3,19 @@
 FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit 开发，所有转换均在本地完成，不上传云端，保护你的文件隐私。
 
 <p align="center">
-  <img src="images/screenshot-01.jpg" alt="FileConverter 宣传图" width="720">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-01.jpg" alt="FileConverter 宣传图" width="720">
 </p>
 
 ## 应用预览
 
 <p align="center">
-  <img src="images/screenshot-02.jpg" alt="功能一览" width="400">
-  <img src="images/screenshot-04.jpg" alt="图片工具演示" width="400">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-02.jpg" alt="功能一览" width="400">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-04.jpg" alt="图片工具演示" width="400">
 </p>
 
 <p align="center">
-  <img src="images/screenshot-05.jpg" alt="文档转换演示" width="400">
-  <img src="images/screenshot-06.jpg" alt="更多功能等你发现" width="400">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-05.jpg" alt="文档转换演示" width="400">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-06.jpg" alt="更多功能等你发现" width="400">
 </p>
 
 ## ⚠️ 首次安装提示（重要）
