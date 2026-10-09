@@ -44,6 +44,26 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 > 说明：以上步骤出自 [Apple 官方支持文档](https://support.apple.com/zh-cn/guide/mac-help/mchleab3a043/mac) 与 [打开来自身份不明开发者的 Mac App](https://support.apple.com/guide/mac-help/mh40616/mac)。如果你对安全性有任何疑虑，欢迎通过 Issues 反馈，也可以自行检查源码后决定是否使用。
 
+## 更新记录
+
+### v2.7（2026-10-09）
+- 修复拖过轮盘未投放松手后悬浮点延迟消失的问题，现在松手立即隐藏
+- 完善拖拽会话判定，正常投放行为不受影响
+
+### v2.6
+- 修复拖拽结束与投放回调的竞态问题（Dock 下载栈直接拖入不再被误杀）
+- 合并面板支持继续拖入追加文件
+- 合并队列不足（少于 2 个文件）时给出内联提示
+
+### v2.5
+- 修复完成状态图标被其他窗口遮挡的问题
+- 合并面板（PDF 合并）进入流程放行
+
+### v2.4
+- 完善拖拽守卫逻辑，修复拖过未投放卡屏问题
+
+更多历史版本请查看 [Releases](https://github.com/f8r4ksv7v4-hub/FileConverter/releases)。
+
 ## 功能特性
 
 - **格式转换**：拖拽文件到桌面悬浮轮盘，选择目标格式即可本地转换，支持常见文档、图片、音视频等格式互转
@@ -97,6 +117,26 @@ FileConverter is a local file conversion tool for macOS, built with SwiftUI + Ap
 <p align="center">
   <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-01.jpg" alt="FileConverter" width="720">
 </p>
+
+#### Changelog
+
+##### v2.7 (2026-10-09)
+- Fixed the floating dot not disappearing immediately after dragging past the wheel and releasing without dropping.
+- Improved drag session handling; normal drop behavior is unaffected.
+
+##### v2.6
+- Fixed a race condition between drag-end and drop callbacks (dragging directly from the Dock download stack is no longer killed).
+- Merge panel now supports dragging in more files to append to the queue.
+- Inline hint when the merge queue has fewer than 2 files.
+
+##### v2.5
+- Fixed the completion icon being occluded by other windows.
+- Enabled entering the merge panel (PDF merge).
+
+##### v2.4
+- Improved drag guards; fixed a freeze when dragging across the wheel without dropping.
+
+See [Releases](https://github.com/f8r4ksv7v4-hub/FileConverter/releases) for earlier versions.
 
 #### Features
 
@@ -163,3 +203,4 @@ A Windows version (Electron) is available with feature parity: floating ball whe
 #### License
 
 MIT
+
