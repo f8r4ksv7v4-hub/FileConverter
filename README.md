@@ -120,6 +120,9 @@ FileConverter is a local file conversion tool for macOS, built with SwiftUI + Ap
 
 #### Changelog
 
+##### v2.8 (2026-10-10)
+- Fixed the floating ball being accidentally triggered when dragging other app windows (added window movement detection; drag responses are suppressed while a window is being dragged).
+
 ##### v2.7 (2026-10-09)
 - Fixed the floating dot not disappearing immediately after dragging past the wheel and releasing without dropping.
 - Improved drag session handling; normal drop behavior is unaffected.
