@@ -46,6 +46,9 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 ## 更新记录
 
+### v2.11（2026-10-10）
+- docx→PDF 转换回归稳定输出：移除对嵌入截图填写线的过度处理，封面与下划线渲染恢复正常
+
 ### v2.7（2026-10-09）
 - 修复拖过轮盘未投放松手后悬浮点延迟消失的问题，现在松手立即隐藏
 - 完善拖拽会话判定，正常投放行为不受影响
@@ -119,6 +122,9 @@ FileConverter is a local file conversion tool for macOS, built with SwiftUI + Ap
 </p>
 
 #### Changelog
+
+##### v2.11 (2026-10-10)
+- docx→PDF conversion returns to stable output: removed the over-processing of embedded screenshot underline, cover page and underlines render correctly again.
 
 ##### v2.8 (2026-10-10)
 - Fixed the floating ball being accidentally triggered when dragging other app windows (added window movement detection; drag responses are suppressed while a window is being dragged).
