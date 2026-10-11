@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: file:;">
+  <title>FileConverter</title>
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <!-- 毛玻璃 + 三色动态光晕背景（macOS glowBackground） -->
+  <div class="glow-bg">
+    <div class="blob purple"></div>
+    <div class="blob pink"></div>
+    <div class="blob yellow"></div>
+  </div>
+
+  <!-- 顶栏（macOS header：App 名 + 图标按钮；Windows 无边框需自绘窗口控制） -->
+  <header class="topbar">
+    <div class="topbar-drag">
+      <span class="app-title">FileConverter</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="tb-icon" id="btnDonate" title="打赏">♥</button>
+      <button class="tb-icon" id="btnFeedback" title="反馈">💬</button>
+      <button class="tb-icon" id="btnUpdate" title="检查更新">↻</button>
+      <button class="tb-icon" id="btnDeps" title="依赖检查">🔧</button>
+      <button class="tb-icon" id="btnSettings" title="设置">⚙</button>
+      <span class="tb-sep"></span>
+      <button class="tb-icon" id="btnMin" title="最小化">–</button>
+      <button class="tb-icon close" id="btnClose" title="关闭（悬浮球可再次呼出）">×</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <!-- 视图：转换 -->
+    <section class="view active" id="viewConvert">
+      <!-- 拖放区（macOS dropArea：虚线渐变边框 + 光标图标） -->
+      <div class="drop-area" id="dropArea">
+        <div class="drop-circle">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" color="#a9a9bd"><path d="M13 3h8v8"/><path d="M21 3l-9 9"/><path d="M3 13v7a1 1 0 0 0 1 1h7"/></svg>
+        </div>
+        <div class="drop-title" id="dropTitle">拖拽文件到悬浮球，或点击选择文件</div>
+        <div class="drop-detail" id="dropDetail">支持图片、视频、音频、PDF 与文档，全程本地离线转换</div>
+      </div>
+
+      <!-- 任务列表（macOS taskList） -->
+      <div class="task-list" id="taskList"></div>
+
+      <!-- 底部状态条 -->
+      <div class="status-bar" id="statusBar">原创本地文件格式转换工具 · 隐私安全 · 无需上传</div>
+    </section>
+
+    <!-- 视图：设置（内嵌 macOS SettingsView 要点） -->
+    <section class="view" id="viewSettings">
+      <div class="settings-card glass">
+        <h3 class="settings-title grad-text">设置</h3>
+
+        <div class="set-row">
+          <div>
+            <div class="set-name">语言</div>
+            <div class="set-desc">界面显示语言</div>
+          </div>
+          <div class="set-control">
+            <button class="chip" data-lang="zh">中文</button>
+            <button class="chip" data-lang="en">English</button>
+          </div>
+        </div>
+
+        <div class="set-row">
+          <div>
+            <div class="set-name">开机自启</div>
+            <div class="set-desc">登录 Windows 时自动启动</div>
+          </div>
+          <label class="switch"><input type="checkbox" id="setLaunch"><span class="slider"></span></label>
+        </div>
+
+        <div class="set-row">
+          <div>
+            <div class="set-name">声音反馈</div>
+            <div class="set-desc">转换完成时播放提示音</div>
+          </div>
+          <label class="switch"><input type="checkbox" id="setSound"><span class="slider"></span></label>
+        </div>
+
+        <div class="set-row">
+          <div>
+            <div class="set-name">显示悬浮球</div>
+            <div class="set-desc">常驻屏幕顶部的快捷转换入口</div>
+          </div>
+          <label class="switch"><input type="checkbox" id="setFloat"><span class="slider"></span></label>
+        </div>
+
+        <div class="set-row">
+          <div>
+            <div class="set-name">检查更新</div>
+            <div class="set-desc" id="updateDesc">当前已是最新版本</div>
+          </div>
+          <button class="btn small" id="btnCheckUpdate">检查更新</button>
+        </div>
+
+        <div class="set-about glass-inner">
+          <div class="about-author">FileConverter <span class="about-version" id="aboutVersion"></span></div>
+          <div class="about-desc">原创本地文件格式转换工具，隐私安全、无需上传。</div>
+          <div class="about-links">
+            <button class="link" id="btnRepo">GitHub 仓库</button>
+            <button class="link" id="btnAfdian">爱发电</button>
+          </div>
+        </div>
+      </div>
+      <button class="btn back" id="btnBack">← 返回转换</button>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="../formats.js"></script>
+  <script src="../i18n.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "name": "fileconverter-windows",
+  "version": "1.0.0",
+  "description": "FileConverter - 本地离线文件格式转换工具（Windows 版）",
+  "main": "main.js",
+  "author": "Xzy",
+  "license": "MIT",
+  "homepage": "https://github.com/f8r4ksv7v4-hub/FileConverter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/f8r4ksv7v4-hub/FileConverter"
+  },
+  "scripts": {
+    "start": "electron .",
+    "setup:win-deps": "node scripts/setup-win-deps.js",
+    "dist:win": "npm run setup:win-deps && electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.xzy.FileConverter",
+    "productName": "FileConverter",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "polyfill-dommatrix.js",
+      "src/**/*",
+      "!dist/**",
+      "!release/**",
+      "!app-staging/**",
+      "!temp_iconset/**",
+      "!resources/**",
+      "!*.log",
+      "!build/**",
+      "!temp_build*.log",
+      "!node_modules/@img/sharp-darwin-arm64/**",
+      "!node_modules/@img/sharp-libvips-darwin-arm64/**",
+      "!node_modules/@napi-rs/canvas-darwin-arm64/**"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/ffmpeg.exe",
+        "to": "ffmpeg.exe"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "FileConverter-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "FileConverter",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "f8r4ksv7v4-hub",
+      "repo": "FileConverter"
+    }
+  },
+  "dependencies": {
+    "@napi-rs/canvas-win32-x64-msvc": "^0.1.80",
+    "docx": "^9.9.0",
+    "electron-updater": "^6.3.9",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.13.0",
+    "marked": "^18.1.0",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^2.4.5",
+    "sharp": "^0.33.5",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^26.15.3",
+    "electron-packager": "^17.1.2"
+  },
+  "optionalDependencies": {
+    "@img/sharp-win32-x64": "^0.33.5"
+  }
+}

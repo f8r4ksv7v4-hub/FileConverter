@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:;">
+  <title>图片工具</title>
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+  <div id="wrap">
+    <div class="toolbar glass">
+      <button class="btn ghost" id="loadBtn">打开图片</button>
+      <input type="file" id="fileInput" accept="image/*" hidden>
+      <span class="sep"></span>
+      <button class="tool-btn" data-tool="crop">裁剪</button>
+      <button class="tool-btn" data-tool="background">加背景</button>
+      <button class="tool-btn" data-tool="marker">涂黑</button>
+      <button class="tool-btn" data-tool="watermark">水印</button>
+      <button class="tool-btn" data-tool="color">色彩</button>
+      <button class="tool-btn" data-tool="compress">压缩</button>
+      <button class="tool-btn" data-tool="strip">去元数据</button>
+      <span class="sep"></span>
+      <button class="btn ghost" id="saveBtn">保存</button>
+      <button class="btn ghost" id="resetBtn">重置</button>
+      <span id="tip" class="tip"></span>
+    </div>
+
+    <div class="canvas-wrap">
+      <canvas id="cv"></canvas>
+      <div class="empty" id="empty">拖入或打开一张图片开始编辑</div>
+    </div>
+
+    <!-- 工具面板 -->
+    <div class="panel glass hidden" id="panel"></div>
+  </div>
+  <script src="tools.js"></script>
+</body>
+</html>

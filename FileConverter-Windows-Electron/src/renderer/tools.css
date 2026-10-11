@@ -1,0 +1,92 @@
+/* 图片工具页 —— macOS 视觉统一（深色玻璃卡片） */
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(15, 15, 22, 0.9);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  backdrop-filter: blur(30px) saturate(180%);
+  color: #e9e9f2;
+  font-family: -apple-system, "Segoe UI Variable", "Segoe UI", "Microsoft YaHei UI", sans-serif;
+  user-select: none;
+}
+#wrap { display: flex; flex-direction: column; height: 100vh; }
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.sep { width: 1px; height: 20px; background: rgba(255, 255, 255, 0.12); }
+.tool-btn {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #d5d5e4;
+  border-radius: 10px;
+  padding: 6px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tool-btn:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+.tool-btn.active {
+  background: linear-gradient(135deg, #7a3aed, #ec4899, #f7b733);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(236, 72, 153, 0.35);
+}
+.tip { margin-left: auto; font-size: 11px; color: #8d8da3; }
+.canvas-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px;
+  border-radius: 18px;
+  border: 2px dashed rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  position: relative;
+}
+.canvas-wrap.dragover { border-color: #f7b733; box-shadow: 0 0 30px rgba(247, 183, 51, 0.3); }
+#cv { max-width: 100%; max-height: 100%; }
+.empty { color: #6f6f85; font-size: 13px; }
+.panel {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 240px;
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(22, 22, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.panel label { font-size: 11px; color: #a9a9bd; display: flex; align-items: center; justify-content: space-between; }
+.panel input[type="range"] { flex: 1; margin: 0 8px; accent-color: #ec4899; }
+.panel input[type="number"], .panel select {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e9e9f2;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  width: 90px;
+}
+.panel .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.panel .apply {
+  margin-top: 4px;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 0;
+  background: linear-gradient(135deg, #7a3aed, #ec4899, #f7b733);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hidden { display: none !important; }
