@@ -46,6 +46,13 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 ## 更新记录
 
+### v3.0（2026-10-11）
+- 新增 PPTX / XLSX 转 Markdown 输出
+- PDF 轮盘补齐工具按钮：压缩 PDF、清除元数据、旋转 90°、拆分每页
+- 多张图片可合并为单个 PDF / PPTX
+- Markdown 输出名称统一为「md」
+
+
 ### v2.11（2026-10-10）
 - docx→PDF 转换回归稳定输出：移除对嵌入截图填写线的过度处理，封面与下划线渲染恢复正常
 
