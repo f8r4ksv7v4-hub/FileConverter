@@ -14,6 +14,8 @@ FileConverter 是一款跨平台本地文件转换工具，提供 macOS 原生�
 - **悬浮球交互**：桌面悬浮小圆点，拖入可转换文件即展开为功能轮盘
 - **自动更新**：基于 GitHub Releases 自动检查并下载安装新版本
 
+macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 Markdown / PDF 等）由内置 LibreOffice headless 引擎驱动，并经过字体映射、排版修复、串行调度与超时回收等深度优化，转换保真度和稳定性远强于普通开源转换器。其中 PPTX / XLSX 转 Markdown 走原生 OOXML 解析，保留文本与表格结构。
+
 **Windows 版**：作为 FileConverter 的 Windows 风味版，基于 FileFlipper（MIT 开源协议）融合 Mac 版 FileConverter 的设计与交互开发，采用 C# WPF 实现，UI 与操作逻辑 1:1 对齐 macOS 版（紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘、深色毛玻璃界面），所有转换同样在本地完成，不上传云端，保护你的文件隐私。
 
 具体功能：
