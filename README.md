@@ -46,6 +46,11 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 ## 更新记录
 
+### v3.0-windows（2026-10-11）
+- Windows 版全面重构（C# WPF）：放弃 Electron 方案，以 FileFlipper（MIT）Windows 源码为基础重写，UI 对齐 macOS 版视觉（紫粉黄三色渐变光晕、磨砂半透明气泡、圆盘轮盘），拖拽显隐逻辑与 Mac 版一致
+- 转换能力大幅增强：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转、PPT→PDF/MD、表格→PDF、音视频压缩与转码、OCR 文字识别、一键抠图，以及图片 / PDF 工具（裁剪、压缩、清理、旋转、拆分、合并）
+- 托盘常驻 + 右键「发送到」快捷入口；自包含单文件，无需安装 .NET
+
 ### v3.0（2026-10-11）
 - 新增 PPTX / XLSX 转 Markdown 输出
 - PDF 轮盘补齐工具按钮：压缩 PDF、清除元数据、旋转 90°、拆分每页
@@ -98,14 +103,16 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 ## Windows 版
 
-Windows 版（Electron）已发布，设计与功能与 macOS 版保持一致：悬浮球拖拽格式轮盘、图片/音视频格式互转、文档转 PDF（docx / md / txt / html / xlsx）、PDF 转文档（txt / docx / md，文本级）、文档转 Markdown（docx / txt / html / pdf → md，文本级）、PDF 合并、图片工具（裁剪 / 加背景 / 涂黑标记 / 多水印 / 色彩调整）、中英双语、自动更新。pptx→PDF 暂未支持（无可靠纯 JS 方案，规划中）。
+Windows 版 v3.0（C# WPF）已发布，以 FileFlipper（MIT）Windows 源码为基础重构，UI 与操作逻辑对齐 macOS 版：紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘；按住 Shift 拖拽文件展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏。
 
-- **下载（主页直链）**：[FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/raw/main/FileConverter-Windows-v1.0-win32-x64.zip)（约 200MB，仓库主页即可找到）
-- **下载（Release）**：[FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)
-- **使用**：解压后双击 `FileConverter.exe` 即可运行，无需安装
+- **功能**：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转（docx / md / txt / html / rtf 等）、PPTX→PDF / Markdown、XLSX→PDF、音视频压缩与转码、OCR 文字识别、一键抠图；图片工具（裁剪 / 压缩 / 清理元数据 / 缩放 50% / 旋转 / 黑白 / 去背景）、PDF 工具（合并 / 压缩 / 清理 / 旋转 / 拆分）
+- **下载（Release）**：[FileConverter-Windows-3.0.0.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v3.0-windows)（约 66MB）
+- **使用**：解压后双击 `FileConverter.exe` 即可运行，自包含单文件，无需安装 .NET；托盘常驻，也可右键文件 →「发送到」→ FileConverter
 - **系统要求**：Windows 10 / 11（64 位）
 
 > 首次运行时 Windows SmartScreen 可能提示「Windows 已保护你的电脑」，点击「更多信息」→「仍要运行」即可。应用未签名，属正常提示；如不放心可先核对下载文件的哈希值。
+
+> 旧版说明：v1.0（Electron）已由 v3.0 替代，如需查看请访问 [v1.0-windows Release](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)。
 
 ## 环境要求
 
@@ -202,11 +209,11 @@ The app will be added to the security exceptions and can be opened normally afte
 
 #### Windows Version
 
-A Windows version (Electron) is available with feature parity: floating ball wheel, image/audio/video conversion, document to PDF (docx / md / txt / html / xlsx), PDF to text/docx/md (text-based), document to Markdown (docx / txt / html / pdf, text-based), PDF merge, image tools (crop / background / redact / multi-watermark / color adjust), bilingual UI, and auto update. pptx→PDF is not yet supported (no reliable pure-JS solution; planned).
+Windows v3.0 (C# WPF) is now available, rebuilt on the FileFlipper (MIT) Windows source with macOS-aligned UI and interaction: purple-pink-yellow gradient glow, frosted translucent bubbles on a picker arc. Hold Shift while dragging files to open the format wheel, Ctrl+Shift for the tool wheel; it auto-hides when you release without dropping.
 
-- **Direct download (repo page)**: [FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/raw/main/FileConverter-Windows-v1.0-win32-x64.zip) (~200 MB)
-- **Release download**: [FileConverter-Windows-v1.0-win32-x64.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)
-- **Usage**: Unzip and double-click `FileConverter.exe` — no installation needed.
+- **Features**: image conversion, PDF (to images / text / Markdown / Word), document conversion (docx / md / txt / html / rtf …), PPTX→PDF / Markdown, XLSX→PDF, audio/video compression and transcoding, OCR text recognition, one-click background removal; image tools (crop / compress / clean metadata / 50% resize / rotate / B&W / cutout), PDF tools (merge / compress / clean / rotate / split)
+- **Release download**: [FileConverter-Windows-3.0.0.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v3.0-windows) (~66 MB)
+- **Usage**: Unzip and double-click `FileConverter.exe` — self-contained, no .NET install needed; lives in the notification area, or right-click a file → "Send to" → FileConverter
 - **System requirements**: Windows 10 / 11 (64-bit)
 
 > On first run, Windows SmartScreen may show "Windows protected your PC" — click "More info" → "Run anyway". The app is unsigned; this is a normal prompt. You may verify the file hash if concerned.
