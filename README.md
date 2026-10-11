@@ -2,6 +2,18 @@
 
 FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit 完全原创开发，未借鉴其他同类工具，所有转换均在本地完成，不上传云端，保护你的文件隐私。
 
+**Windows 版**：FileConverter Windows 版基于 FileFlipper（MIT 开源协议）融合 Mac 版 FileConverter 的设计与交互开发，采用 C# WPF 实现，UI 与操作逻辑 1:1 对齐 macOS 版（紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘、深色毛玻璃界面），所有转换同样在本地完成，不上传云端，保护你的文件隐私。
+
+具体功能：
+
+- **图片互转**：jpg / png / webp / bmp / gif / heic 等格式互转；图片工具含裁剪、压缩、清理元数据、缩放 50%、旋转、黑白、一键去背景
+- **PDF 工具**：PDF 转图片 / 文本 / Markdown / Word；PDF 合并、压缩、清理元数据、旋转、按页拆分
+- **文档转换**：docx / md / txt / html / rtf 等互转；PPTX→PDF / Markdown；XLSX→PDF
+- **音视频**：压缩与格式转码
+- **OCR 文字识别**：从图片 / PDF 中提取文字
+- **操作方式与 Mac 版一致**：拖拽文件到悬浮球展开轮盘；按住 Shift 拖拽展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏
+- **托盘常驻 + 右键「发送到」快捷入口**：自包含单文件，无需安装 .NET，Windows 10 / 11 直接运行
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-01.jpg" alt="FileConverter 宣传图" width="720">
 </p>
