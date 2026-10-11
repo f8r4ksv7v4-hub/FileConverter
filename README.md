@@ -1,6 +1,8 @@
 # FileConverter
 
-FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit 完全原创开发，未借鉴其他同类工具，所有转换均在本地完成，不上传云端，保护你的文件隐私。
+FileConverter 是一款跨平台本地文件转换工具，提供 macOS 原生版与 Windows 版双平台支持，采用原生技术栈打造（macOS 基于 SwiftUI + AppKit，Windows 基于 C# WPF），所有转换均在本地完成，不上传云端，保护你的文件隐私。
+
+macOS 版：FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit 完全原创开发，未借鉴其他同类工具，所有转换均在本地完成，不上传云端，保护你的文件隐私。
 
 **原创独特 UI**：桌面悬浮小圆点交互，拖入文件即展开紫粉黄三色渐变光晕的圆盘轮盘，磨砂半透明气泡按钮，深色毛玻璃界面——全部视觉与交互均为原创设计，随手即用、细节拉满。
 
