@@ -46,10 +46,11 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 ## 更新记录
 
-### v3.0-windows（2026-10-11）
+### v2.0-windows（2026-10-11）
 - Windows 版全面重构（C# WPF）：放弃 Electron 方案，以 FileFlipper（MIT）Windows 源码为基础重写，UI 对齐 macOS 版视觉（紫粉黄三色渐变光晕、磨砂半透明气泡、圆盘轮盘），拖拽显隐逻辑与 Mac 版一致
 - 转换能力大幅增强：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转、PPT→PDF/MD、表格→PDF、音视频压缩与转码、OCR 文字识别、一键抠图，以及图片 / PDF 工具（裁剪、压缩、清理、旋转、拆分、合并）
 - 托盘常驻 + 右键「发送到」快捷入口；自包含单文件，无需安装 .NET
+- 旧版 Electron 源码已归档至仓库 `FileConverter-Windows-Electron/` 目录
 
 ### v3.0（2026-10-11）
 - 新增 PPTX / XLSX 转 Markdown 输出
@@ -88,6 +89,17 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 - **悬浮球交互**：桌面悬浮小圆点，拖入可转换文件即展开为功能轮盘
 - **自动更新**：基于 GitHub Releases 自动检查并下载安装新版本
 
+## ⚠️ 拖拽修饰符设置（重要）
+
+在 macOS 版应用中，你可以通过 **「拖拽修饰符」→「转换轮盘」** 设置决定：**拖入文件时需要按住哪个修饰键组合**，才会在鼠标位置展开转换轮盘（截图见下方说明）。默认值为 **Option ( ⌥ )**，也可在下拉菜单中选择其他修饰键组合（如 Shift、Command、Control 等）。
+
+**建议保持默认（或任一修饰键），不要设置为「无修饰键」**：
+
+- 设置修饰键后，普通拖放（如把文件拖进 Finder、浏览器、聊天窗口等）完全不受影响，只有按住对应修饰键拖入时才会唤起 FileConverter 轮盘；
+- 若设置为「无修饰键」，FileConverter 的悬浮轮盘会拦截**所有**拖入其感应区域的文件，可能导致你把文件拖到**其他 App** 时被轮盘截获、无法完成投放（例如拖文件到微信/邮件附件区域却被转换轮盘抢走）。
+
+> macOS 版设置路径：主窗口 → 设置 → 拖拽修饰符 → 转换轮盘 → 选择修饰键组合。Windows 版固定为：按住 **Shift** 展开格式轮盘，**Ctrl+Shift** 展开工具轮盘。
+
 ## 使用说明
 
 1. 启动应用后，首次会打开主页面；桌面上会出现悬浮小圆点
@@ -103,16 +115,16 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 ## Windows 版
 
-Windows 版 v3.0（C# WPF）已发布，以 FileFlipper（MIT）Windows 源码为基础重构，UI 与操作逻辑对齐 macOS 版：紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘；按住 Shift 拖拽文件展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏。
+Windows 版 v2.0（C# WPF）已发布，以 FileFlipper（MIT）Windows 源码为基础重构，UI 与操作逻辑对齐 macOS 版：紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘；按住 Shift 拖拽文件展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏。
 
 - **功能**：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转（docx / md / txt / html / rtf 等）、PPTX→PDF / Markdown、XLSX→PDF、音视频压缩与转码、OCR 文字识别、一键抠图；图片工具（裁剪 / 压缩 / 清理元数据 / 缩放 50% / 旋转 / 黑白 / 去背景）、PDF 工具（合并 / 压缩 / 清理 / 旋转 / 拆分）
-- **下载（Release）**：[FileConverter-Windows-3.0.0.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v3.0-windows)（约 66MB）
+- **下载（Release）**：[FileConverter-Windows-2.0.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows)（约 66MB）
 - **使用**：解压后双击 `FileConverter.exe` 即可运行，自包含单文件，无需安装 .NET；托盘常驻，也可右键文件 →「发送到」→ FileConverter
 - **系统要求**：Windows 10 / 11（64 位）
 
 > 首次运行时 Windows SmartScreen 可能提示「Windows 已保护你的电脑」，点击「更多信息」→「仍要运行」即可。应用未签名，属正常提示；如不放心可先核对下载文件的哈希值。
 
-> 旧版说明：v1.0（Electron）已由 v3.0 替代，如需查看请访问 [v1.0-windows Release](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)。
+> 旧版说明：v1.0（Electron）已由 v2.0 替代，源码归档于仓库 `FileConverter-Windows-Electron/` 目录；如需 Release 请访问 [v1.0-windows Release](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows)。
 
 ## 环境要求
 
@@ -194,6 +206,17 @@ The app will be added to the security exceptions and can be opened normally afte
 
 > These steps follow [Apple's official documentation](https://support.apple.com/zh-cn/guide/mac-help/mchleab3a043/mac). If you have any security concerns, feel free to report them via Issues.
 
+#### Drag Modifier Setting (Important)
+
+In the macOS app, **"Drag Modifier" → "Conversion Wheel"** controls **which modifier key combination you must hold while dragging files** to expand the conversion wheel at the cursor. The default is **Option ( ⌥ )**; other combinations (Shift, Command, Control, …) can be selected from the dropdown.
+
+**We recommend keeping the default (or any modifier) — do not set it to "No modifier":**
+
+- With a modifier configured, ordinary drag-and-drop (e.g. into Finder, browsers, chat apps) is completely unaffected — the wheel only appears when you hold the modifier while dragging;
+- If set to "No modifier", the floating wheel will intercept **every** file dragged through its hotspot, so files may get captured by the wheel instead of being dropped into **other apps** (e.g. attaching files in WeChat / email).
+
+> macOS: Main window → Settings → Drag Modifier → Conversion Wheel → pick a modifier combination. Windows version is fixed: hold **Shift** for the format wheel, **Ctrl+Shift** for the tool wheel.
+
 #### Usage
 
 1. After launching, the main window opens and a floating dot appears on the desktop.
@@ -209,14 +232,16 @@ The app will be added to the security exceptions and can be opened normally afte
 
 #### Windows Version
 
-Windows v3.0 (C# WPF) is now available, rebuilt on the FileFlipper (MIT) Windows source with macOS-aligned UI and interaction: purple-pink-yellow gradient glow, frosted translucent bubbles on a picker arc. Hold Shift while dragging files to open the format wheel, Ctrl+Shift for the tool wheel; it auto-hides when you release without dropping.
+Windows v2.0 (C# WPF) is now available, rebuilt on the FileFlipper (MIT) Windows source with macOS-aligned UI and interaction: purple-pink-yellow gradient glow, frosted translucent bubbles on a picker arc. Hold Shift while dragging files to open the format wheel, Ctrl+Shift for the tool wheel; it auto-hides when you release without dropping.
 
 - **Features**: image conversion, PDF (to images / text / Markdown / Word), document conversion (docx / md / txt / html / rtf …), PPTX→PDF / Markdown, XLSX→PDF, audio/video compression and transcoding, OCR text recognition, one-click background removal; image tools (crop / compress / clean metadata / 50% resize / rotate / B&W / cutout), PDF tools (merge / compress / clean / rotate / split)
-- **Release download**: [FileConverter-Windows-3.0.0.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v3.0-windows) (~66 MB)
+- **Release download**: [FileConverter-Windows-2.0.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows) (~66 MB)
 - **Usage**: Unzip and double-click `FileConverter.exe` — self-contained, no .NET install needed; lives in the notification area, or right-click a file → "Send to" → FileConverter
 - **System requirements**: Windows 10 / 11 (64-bit)
 
 > On first run, Windows SmartScreen may show "Windows protected your PC" — click "More info" → "Run anyway". The app is unsigned; this is a normal prompt. You may verify the file hash if concerned.
+
+> Legacy note: v1.0 (Electron) has been superseded by v2.0; its source is archived in the `FileConverter-Windows-Electron/` directory of this repo. See the [v1.0-windows Release](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v1.0-windows) if needed.
 
 #### Environment Requirements
 

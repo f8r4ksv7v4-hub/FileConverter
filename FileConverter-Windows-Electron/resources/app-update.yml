@@ -1,0 +1,7 @@
+appId: com.xzy.FileConverter
+productName: FileConverter
+updaterCacheDirName: fileconverter-updater
+publish:
+  provider: github
+  owner: f8r4ksv7v4-hub
+  repo: FileConverter

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <title>FileConverter Float</title>
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="float.css">
+</head>
+<body>
+  <div id="stage">
+    <!-- 三色动态光晕背景（macOS glowBlob，转换中加速） -->
+    <div id="glowBlobs" class="glow-blobs hidden">
+      <div class="blob purple"></div>
+      <div class="blob pink"></div>
+      <div class="blob yellow"></div>
+    </div>
+
+    <!-- 紧凑态：悬浮小球（贴顶居中，可拖拽移动） -->
+    <div id="ball" class="ball" title="FileConverter">
+      <div class="ball-core" id="ballCore"></div>
+    </div>
+
+    <!-- 展开态：圆形轮盘（双圈格式环 + 中心盘 + 二级工具环 + 合并面板） -->
+    <div id="wheel" class="wheel hidden">
+      <div class="wheel-disc" id="wheelDisc">
+        <div class="wheel-items" id="wheelItems"></div>
+        <!-- 中心盘：格式名 / 转换中光晕 / 完成态文件夹 -->
+        <div class="center-disc" id="centerDisc">
+          <div class="cd-label" id="cdLabel">PDF</div>
+          <div class="cd-spin"></div>
+          <div class="cd-folder" id="cdFolder"></div>
+        </div>
+        <!-- 二级工具环（图片源悬停 1.5s 展开：压缩/元数据/编辑/注释/加背景/裁剪/涂黑） -->
+        <div class="tool-ring hidden" id="toolRing"></div>
+        <div class="tool-center hidden" id="toolCenter">
+          <div class="tc-preview" id="tcPreview"></div>
+          <div class="tc-name" id="tcName"></div>
+          <div class="tc-actions">
+            <button class="tc-back" id="tcBack" type="button">返回</button>
+            <button class="tc-run" id="tcRun" type="button">应用</button>
+          </div>
+        </div>
+        <!-- 合并面板（多图合并 PDF/PPTX、PDF 合并） -->
+        <div class="merge-panel hidden" id="mergePanel">
+          <div class="mp-head">
+            <span class="mp-title grad-text" id="mpTitle">合并为 PDF</span>
+            <button class="mp-close-x" id="mpCloseX" type="button">×</button>
+          </div>
+          <div class="mp-chips" id="mpChips"></div>
+          <div class="mp-list" id="mpList"></div>
+          <div class="mp-hint" id="mpHint"></div>
+          <div class="mp-actions">
+            <button class="mp-add" id="mpAdd" type="button">＋ 添加文件</button>
+            <button class="mp-convert" id="mpConvert" type="button">开始合并</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+  </div>
+  <script src="../formats.js"></script>
+  <script src="../i18n.js"></script>
+  <script src="float.js"></script>
+</body>
+</html>

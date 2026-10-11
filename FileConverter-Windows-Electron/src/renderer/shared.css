@@ -1,0 +1,140 @@
+/* FileConverter - 共享样式：品牌渐变、毛玻璃、光晕动效（对齐 macOS 版视觉规范） */
+:root {
+  --fc-purple: #7a3aed;
+  --fc-pink: #ec4899;
+  --fc-yellow: #f7b733;
+  --fc-bg: #0f0f16;
+  --fc-card: rgba(255, 255, 255, 0.06);
+  --fc-border: rgba(255, 255, 255, 0.1);
+  --fc-text: #f2f2f7;
+  --fc-muted: #9a9aa5;
+  --fc-grad: linear-gradient(135deg, #7a3aed 0%, #ec4899 50%, #f7b733 100%);
+  --fc-grad-soft: linear-gradient(135deg, rgba(122, 58, 237, 0.85), rgba(236, 72, 153, 0.85));
+  --fc-radius: 14px;
+  --fc-blur: 20px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: var(--fc-text);
+  background: transparent;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 毛玻璃面板（macOS .thinMaterial 近似） */
+.glass {
+  background: rgba(28, 26, 40, 0.72);
+  -webkit-backdrop-filter: blur(var(--fc-blur)) saturate(170%);
+  backdrop-filter: blur(var(--fc-blur)) saturate(170%);
+  border: 1px solid var(--fc-border);
+  border-radius: var(--fc-radius);
+}
+
+/* 品牌渐变按钮 */
+.btn {
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 9px 18px;
+  background: var(--fc-grad);
+  transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
+}
+.btn:hover { transform: translateY(-1px); opacity: 0.92; }
+.btn:active { transform: translateY(0); opacity: 0.85; }
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--fc-border);
+  color: var(--fc-text);
+}
+
+/* 顶栏圆形图标按钮（macOS ContentView 顶栏图标） */
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--fc-muted);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+.icon-btn:hover { background: rgba(255, 255, 255, 0.12); color: #fff; transform: scale(1.08); }
+.icon-btn:active { transform: scale(0.94); }
+
+/* 渐变文字（标题/轮盘标题） */
+.grad-text {
+  background: var(--fc-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 三色动态光晕（macOS glowBlob：紫/粉/黄漂移，blur 60 近似） */
+@keyframes blobDrift1 {
+  0%, 100% { transform: translate(-12%, -8%) scale(1); }
+  33% { transform: translate(14%, 10%) scale(1.12); }
+  66% { transform: translate(6%, -14%) scale(0.94); }
+}
+@keyframes blobDrift2 {
+  0%, 100% { transform: translate(12%, 10%) scale(1.05); }
+  33% { transform: translate(-10%, -12%) scale(0.95); }
+  66% { transform: translate(-6%, 14%) scale(1.1); }
+}
+@keyframes blobDrift3 {
+  0%, 100% { transform: translate(0%, 6%) scale(0.96); }
+  33% { transform: translate(-14%, 8%) scale(1.1); }
+  66% { transform: translate(10%, -10%) scale(1.02); }
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  will-change: transform;
+}
+.blob.purple { background: rgba(122, 58, 237, 0.42); animation: blobDrift1 16s ease-in-out infinite; }
+.blob.pink { background: rgba(236, 72, 153, 0.34); animation: blobDrift2 20s ease-in-out infinite; }
+.blob.yellow { background: rgba(247, 183, 51, 0.26); animation: blobDrift3 24s ease-in-out infinite; }
+
+/* 自定义滚动条 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.26); }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 9px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #fff;
+  background: rgba(15, 15, 22, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  z-index: 999;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toast.hidden { display: none; }
+.toast.ok { border-color: rgba(122, 58, 237, 0.6); }
+.toast.err { border-color: rgba(236, 72, 153, 0.7); }
