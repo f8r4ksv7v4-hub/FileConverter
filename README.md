@@ -144,7 +144,7 @@ macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 
 Windows 版 v2.0（C# WPF）基于 FileFlipper（MIT 开源协议）融合 Mac 版 FileConverter 的设计与交互开发而来，UI 与操作逻辑对齐 macOS 版：紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘；按住 Shift 拖拽文件展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏。
 
 - **功能**：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转（docx / md / txt / html / rtf 等）、PPTX→PDF / Markdown、XLSX→PDF、音视频压缩与转码、OCR 文字识别、一键抠图；图片工具（裁剪 / 压缩 / 清理元数据 / 缩放 50% / 旋转 / 黑白 / 去背景）、PDF 工具（合并 / 压缩 / 清理 / 旋转 / 拆分）
-- **下载（Release）**：安装包已下架，新版（图标与 UI 对齐 Mac 版）整理后重新发布
+- **下载（Release）**：[v2.0-windows 已发布](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows)，下载 `FileConverter-2.0-windows.exe`（自包含单文件，约 170 MB），解压后双击即可运行
 - **使用**：解压后双击 `FileConverter.exe` 即可运行，自包含单文件，无需安装 .NET；托盘常驻，也可右键文件 →「发送到」→ FileConverter
 - **系统要求**：Windows 10 / 11（64 位）
 
