@@ -47,7 +47,7 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 ## 更新记录
 
 ### v2.0-windows（2026-10-11）
-- Windows 版全面重构（C# WPF）：放弃 Electron 方案，以 FileFlipper（MIT）Windows 源码为基础重写，UI 对齐 macOS 版视觉（紫粉黄三色渐变光晕、磨砂半透明气泡、圆盘轮盘），拖拽显隐逻辑与 Mac 版一致
+- Windows 版全面重构（C# WPF）：放弃 Electron 方案，以全新自研 C# WPF 引擎重写，UI 对齐 macOS 版视觉（紫粉黄三色渐变光晕、磨砂半透明气泡、圆盘轮盘），拖拽显隐逻辑与 Mac 版一致
 - 转换能力大幅增强：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转、PPT→PDF/MD、表格→PDF、音视频压缩与转码、OCR 文字识别、一键抠图，以及图片 / PDF 工具（裁剪、压缩、清理、旋转、拆分、合并）
 - 托盘常驻 + 右键「发送到」快捷入口；自包含单文件，无需安装 .NET
 - 旧版 Electron 源码已归档至仓库 `FileConverter-Windows-Electron/` 目录
@@ -115,7 +115,7 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 
 ## Windows 版
 
-Windows 版 v2.0（C# WPF）已发布，以 FileFlipper（MIT）Windows 源码为基础重构，UI 与操作逻辑对齐 macOS 版：紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘；按住 Shift 拖拽文件展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏。
+Windows 版 v2.0（C# WPF）已发布，采用全新自研 C# WPF 引擎重构，UI 与操作逻辑对齐 macOS 版：紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘；按住 Shift 拖拽文件展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏。
 
 - **功能**：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转（docx / md / txt / html / rtf 等）、PPTX→PDF / Markdown、XLSX→PDF、音视频压缩与转码、OCR 文字识别、一键抠图；图片工具（裁剪 / 压缩 / 清理元数据 / 缩放 50% / 旋转 / 黑白 / 去背景）、PDF 工具（合并 / 压缩 / 清理 / 旋转 / 拆分）
 - **下载（Release）**：[FileConverter-Windows-2.0.zip](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows)（约 66MB）
