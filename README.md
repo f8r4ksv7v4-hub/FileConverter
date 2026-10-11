@@ -47,7 +47,7 @@ FileConverter 是一款 macOS 本地文件转换工具，基于 SwiftUI + AppKit
 ## 更新记录
 
 ### v2.0-windows（2026-10-11）
-- Windows 版全面重构（C# WPF）：放弃 Electron 方案，以全新自研 C# WPF 引擎重写，UI 对齐 macOS 版视觉（紫粉黄三色渐变光晕、磨砂半透明气泡、圆盘轮盘），拖拽显隐逻辑与 Mac 版一致
+- Windows 版全面重构（C# WPF）：放弃 Electron 方案，改用 C# WPF 实现（替代原 Electron 版），UI 对齐 macOS 版视觉（紫粉黄三色渐变光晕、磨砂半透明气泡、圆盘轮盘），拖拽显隐逻辑与 Mac 版一致
 - 转换能力大幅增强：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转、PPT→PDF/MD、表格→PDF、音视频压缩与转码、OCR 文字识别、一键抠图，以及图片 / PDF 工具（裁剪、压缩、清理、旋转、拆分、合并）
 - 托盘常驻 + 右键「发送到」快捷入口；自包含单文件，无需安装 .NET
 - 旧版 Electron 源码已归档至仓库 `FileConverter-Windows-Electron/` 目录
