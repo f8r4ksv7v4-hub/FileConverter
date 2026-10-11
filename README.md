@@ -258,7 +258,7 @@ In the macOS app, **"Drag Modifier" → "Conversion Wheel"** controls **which mo
 
 #### Windows Version
 
-Windows v2.0 (C# WPF) is built on FileFlipper (MIT) fused with the design and interaction of the macOS FileConverter, with macOS-aligned UI and interaction: purple-pink-yellow gradient glow, frosted translucent bubbles on a picker arc. Hold Shift while dragging files to open the format wheel, Ctrl+Shift for the tool wheel; it auto-hides when you release without dropping.
+As a FileConverter flavor running on Windows, it is built on FileFlipper (MIT) fused with the design and interaction of the macOS FileConverter, implemented in C# WPF, with UI and interaction mimicking the macOS version: purple-pink-yellow gradient glow, frosted translucent bubble picker wheel, and a dark frosted-glass interface. All conversions also complete locally — nothing is uploaded to the cloud, keeping your files private. Hold Shift while dragging files to open the format wheel, Ctrl+Shift for the tool wheel; it auto-hides when you release without dropping.
 
 - **Features**: image conversion, PDF (to images / text / Markdown / Word), document conversion (docx / md / txt / html / rtf …), PPTX→PDF / Markdown, XLSX→PDF, audio/video compression and transcoding, OCR text recognition, one-click background removal; image tools (crop / compress / clean metadata / 50% resize / rotate / B&W / cutout), PDF tools (merge / compress / clean / rotate / split)
 - **Release download**: The package has been removed; a new build (icon and UI aligned with the macOS version) will be re-released soon
