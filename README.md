@@ -16,7 +16,7 @@ FileConverter 是一款跨平台本地文件转换工具，提供 macOS 原生�
 
 macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 Markdown / PDF 等）由内置 LibreOffice headless 引擎驱动，并经过字体映射、排版修复、串行调度与超时回收等深度优化，转换保真度和稳定性远强于普通开源转换器。其中 PPTX / XLSX 转 Markdown 走原生 OOXML 解析，保留文本与表格结构。
 
-**Windows 版**：作为运行在 Windows 系统的 FileConverter 风味版，FlieConverter 基于 FileFlipper（MIT 开源协议）融合 Mac 版 FileConverter 的设计与交互开发，采用 C# WPF 实现，UI 与操作逻辑模仿 macOS 版（紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘、深色毛玻璃界面），所有转换同样在本地完成，不上传云端，保护你的文件隐私。
+**Windows 版**：作为运行在 Windows 系统的 FileConverter 风味版，基于 FileFlipper（MIT 开源协议）融合 Mac 版 FileConverter 的设计与交互开发，采用 C# WPF 实现，UI 与操作逻辑与 macOS 版保持一致（紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘、深色毛玻璃界面），所有转换同样在本地完成，不上传云端，保护你的文件隐私。
 
 具体功能：
 
@@ -25,7 +25,7 @@ macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 
 - **文档转换**：docx / md / txt / html / rtf 等互转；PPTX→PDF / Markdown；XLSX→PDF
 - **音视频**：压缩与格式转码
 - **OCR 文字识别**：从图片 / PDF 中提取文字
-- **操作方式与 Mac 版一致**：拖拽文件到悬浮球展开轮盘；按住 Shift 拖拽展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏
+- **操作方式与 Mac 版一致**：拖拽文件到屏幕顶部中央的悬浮轮盘即展开格式圆盘（默认任意拖拽触发，可改为 Shift / Alt / Alt + Shift）；按住 Ctrl 拖拽切换到工具轮盘，松手未投放自动隐藏
 - **托盘常驻 + 右键「发送到」快捷入口**：自包含单文件，无需安装 .NET，Windows 10 / 11 直接运行
 
 <p align="center">
@@ -117,22 +117,125 @@ macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 
 
 ## ⚠️ 拖拽修饰符设置（重要）
 
-在 macOS 版应用中，你可以通过 **「拖拽修饰符」→「转换轮盘」** 设置决定：**拖入文件时需要按住哪个修饰键组合**，才会在鼠标位置展开转换轮盘（截图见下方说明）。默认值为 **Option ( ⌥ )**，也可在下拉菜单中选择其他修饰键组合（如 Shift、Command、Control 等）。
+**「拖拽修饰符」** 决定 **拖入文件时需要按住哪个键**，才会唤出转换轮盘：macOS 与 Windows 的默认值均为 **无修饰键**（任意拖拽即展开）。
 
-**建议保持默认（或任一修饰键），不要设置为「无修饰键」**：
+**建议改为任一修饰键（Shift / Option / Alt 等）**：
 
-- 设置修饰键后，普通拖放（如把文件拖进 Finder、浏览器、聊天窗口等）完全不受影响，只有按住对应修饰键拖入时才会唤起 FileConverter 轮盘；
-- 若设置为「无修饰键」，FileConverter 的悬浮轮盘会拦截**所有**拖入其感应区域的文件，可能导致你把文件拖到**其他 App** 时被轮盘截获、无法完成投放（例如拖文件到微信/邮件附件区域却被转换轮盘抢走）。
+- 设置修饰键后，普通拖放（如把文件拖进访达、浏览器、聊天窗口等）完全不受影响，只有按住对应修饰键拖入时才会唤起 FileConverter 轮盘；
+- 若保持「无修饰键」，FileConverter 的悬浮轮盘会拦截**所有**拖入其感应区域的文件，可能导致你把文件拖到**其他 App** 时被轮盘截获、无法完成投放（例如拖文件到微信/邮件附件区域却被转换轮盘抢走）。
 
-> macOS 版设置路径：主窗口 → 设置 → 拖拽修饰符 → 转换轮盘 → 选择修饰键组合。Windows 版固定为：按住 **Shift** 展开格式轮盘，**Ctrl+Shift** 展开工具轮盘。
+> **macOS 版**：主窗口 → 设置 → 通用 → 拖拽修饰符 → 转换轮盘，可选 无 / Shift / Option / Option + Shift。
+> **Windows 版**：设置窗口 → 拖拽修饰符（或托盘右键 → Wheel Trigger…），可选 任意拖拽（无修饰键）/ Shift / Alt / Alt + Shift；按住 **Ctrl** 拖拽可随时切换到工具轮盘。
 
-## 使用说明
+## 使用方法
 
-1. 启动应用后，首次会打开主页面；桌面上会出现悬浮小圆点
-2. **打开主页面**：点击菜单栏的「文件」→「新窗口」即可随时打开主页面
-3. 将文件拖拽到悬浮球上，展开功能轮盘
-4. 选择目标格式或工具，完成转换
-5. 转换完成后点击悬浮球即可打开输出文件所在文件夹
+macOS 版与 Windows 版的操作逻辑一致：**拖入文件 → 在轮盘上选择格式或工具 → 转换结果保存在原文件旁边**。以下分别说明两个版本。
+
+### macOS 版
+
+#### 一、启动与主界面
+
+1. 启动 `FileConverter.app`，主窗口自动打开，桌面上同时出现一个悬浮小圆点（悬浮球）
+2. 之后可随时重新打开主窗口：点击 Dock 图标，或使用菜单栏「文件」→「新窗口」
+3. 主窗口顶部工具栏从左到右依次为：赞助作者、依赖检查（扳手）、设置（齿轮）、反馈、检查更新；中部为拖放区与转换任务列表
+4. 每条转换任务完成后，右侧提供「在访达中显示」按钮
+5. 关闭主窗口不影响使用，悬浮球与全局拖拽监测会继续在后台运行
+
+#### 二、拖拽与轮盘
+
+1. 在访达中拖起一个或多个文件，按住已设置的拖拽修饰键（默认为「无」，即无需按键），拖到悬浮球上，悬浮球展开为**格式轮盘**
+2. 轮盘按文件类型给出可转换的目标格式（图片 / 文档 / 音视频 / PDF 等），光标悬停即高亮，松开鼠标即开始转换
+3. 松手前把文件**拖离轮盘**，轮盘自动收起，不会执行任何操作
+
+#### 三、二级菜单（工具与合并）
+
+- **图片工具**：拖入图片后，光标在某个格式按钮上停留约 0.5 秒，展开图片工具环 —— 压缩、清除元数据、编辑（色彩）、标注（水印）、加背景、裁剪、涂黑
+- **PDF 合并**：拖入多个 PDF，悬停在合并块上进入合并面板，可继续拖入文件追加队列（队列不足 2 个文件时会给出提示）
+- **图片合并**：拖入多张图片并选择「合并为 PDF / PPTX」，进入合并面板
+
+> 光标划过轮盘按钮会有轻微震动反馈，属于正常交互提示。
+
+#### 四、拖拽修饰符设置
+
+- 路径：主窗口 → 设置 → 通用 → **拖拽修饰符 → 转换轮盘**
+- 可选：无（默认）/ Shift / Option / Option + Shift
+- 默认「无」：任何拖拽进入感应区域都会展开轮盘
+- 建议改为 Shift / Option 等修饰键：普通拖放（访达、浏览器、聊天窗口）完全不受影响，只有按住修饰键拖入时才唤起轮盘
+- 同一设置页还可配置界面语言、外观（毛玻璃 / 纯色）、登录时启动、音效反馈、隐藏 Dock 图标；「格式」页可按扩展名（JPG / PNG / WEBP / HEIC / TIFF / BMP / PDF / MP3 / MP4 / DOCX / TXT）单独设置转换质量、是否保留元数据与图片压缩尺寸
+
+#### 五、输出位置
+
+- 转换结果保存在**原文件所在文件夹**，文件名保持原名、仅扩展名变化（如 `报告.docx` → `报告.pdf`）
+- 若同名文件已存在，自动追加序号（`报告 (1).pdf`），**不会覆盖**任何已有文件
+- 转换完成后，点击悬浮球，或在主窗口任务列表中点击「在访达中显示」，即可打开输出文件所在文件夹
+
+#### 六、自动更新
+
+- 启动时自动检查 GitHub Releases 最新版本：发现新版本弹出「下载更新 / 稍后」，已是最新则静默不打扰
+- 手动检查：设置 → 关于 → 检查更新
+- 更新流程：下载名称含 `macOS` 的 zip 资产 → 解压 → 原位替换当前 App（不修改你的安装位置）→ 自动重新打开
+
+#### 七、常见问题
+
+| 现象 | 处理方式 |
+| --- | --- |
+| 首次打开提示「无法检查恶意软件 / 来自身份不明的开发者」 | 见上文《首次安装提示》，按住 Control 点击图标 → 打开；或系统设置 → 隐私与安全性 → 仍要打开 |
+| 拖拽文件没有出现轮盘 | 确认应用正在运行（主窗口或 Dock 图标）；确认已按住所设置的拖拽修饰键 |
+| 音视频压缩或转码失败 | 需要安装 `ffmpeg`，可在依赖检查中一键安装 |
+| 图片转 WebP 失败 | 需要安装 `cwebp` |
+| Office 文档转 PDF / Markdown 效果异常 | 需要安装 LibreOffice（由 headless 引擎驱动高保真转换） |
+| PDF 转 Word 失败 | 需要安装 Python 库 `pdf2docx` |
+| 不清楚缺少哪些依赖 | 点击主窗口顶部扳手按钮打开**依赖检查**，点击「安装缺失依赖」经由 Homebrew 自动安装（需先安装 Homebrew） |
+| Dock 中找不到应用图标 | 已开启「隐藏 Dock 图标」，用菜单栏「文件」→「新窗口」打开主窗口，或在设置中关闭该项 |
+| 开启「登录时启动」失败 | 请先将 App 放入「应用程序」文件夹 |
+
+手动安装依赖的命令：
+
+```bash
+brew install ffmpeg webp                  # 音视频转码 / 图片转 WebP
+brew install --cask libreoffice           # Office 文档高保真转换
+python3 -m pip install --user pdf2docx    # PDF 转 Word
+```
+
+### Windows 版
+
+#### 一、下载与运行
+
+1. 在 [Releases](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows) 下载 `FileConverter-2.0-windows.exe`（自包含单文件，约 170 MB）
+2. 放到任意目录后**双击运行**，无需安装，也无需预先安装 .NET 运行时
+3. 首次运行 SmartScreen 可能提示「Windows 已保护你的电脑」：点击「更多信息」→「仍要运行」
+4. 首次启动会弹出使用教程，并自动将 FileConverter 加入资源管理器右键「发送到」菜单
+
+#### 二、托盘与设置入口
+
+- 程序常驻屏幕右下角**通知区域（托盘）**，关闭窗口不会退出
+- 打开设置：**双击托盘图标**，或**右键托盘图标 → 「设置…」**
+- 设置窗口同时也是主窗口，运行时任务栏始终显示应用图标
+- 托盘菜单项：设置… / 启用 / 随 Windows 启动 / 显示在「发送到」菜单 / Wheel Trigger… / 如何使用… / 关于 FileConverter / 退出 FileConverter
+
+#### 三、触发方式
+
+1. 在资源管理器中拖起文件，屏幕**顶部中央**出现一个小轮盘，把文件靠近它即展开完整格式圆盘
+2. 默认**任意拖拽**都会显示轮盘；如需改为按住 **Shift / Alt / Alt + Shift**，在设置窗口 →「拖拽修饰符」中切换（或托盘右键 → Wheel Trigger…）
+3. **按住 Ctrl 拖拽**可切换到**工具轮盘**（裁剪、压缩、抠图、旋转、合并、拆分等，随文件类型变化）
+4. 轮盘上点击气泡选择目标格式；按 **Esc** 关闭；把文件拖离轮盘松手即取消，不会执行任何操作
+5. 也可右键文件 →「发送到」→ FileConverter（Windows 11 需先点击「显示更多选项」）
+
+#### 四、任务栏最小化与退出
+
+- 设置窗口即主窗口，运行时任务栏始终有图标，随时点击即可唤回；点击 **✕ 只是隐藏窗口**，进程继续驻留托盘
+- 退出应用：右键托盘图标 →「退出 FileConverter」
+- 若界面无响应：按 **Ctrl+Shift+Esc** 打开任务管理器，找到 FileConverter →「结束任务」
+
+#### 五、LibreOffice（可选，提升保真度）
+
+- 文档转 PDF 时，若本机装有 LibreOffice，将调用其 headless 引擎进行高保真渲染
+- 未安装时自动回退到内置渲染引擎，并在转换完成时提示「Install LibreOffice for a higher-fidelity PDF」
+- 需要更高保真度时，从 [LibreOffice 官网](https://www.libreoffice.org/download/download-libreoffice/) 安装即可，安装后无需在 FileConverter 中做任何额外配置
+
+#### 六、系统要求
+
+- Windows 10 / 11（64 位）
 
 ## 支持与反馈
 
@@ -141,11 +244,11 @@ macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 
 
 ## Windows 版
 
-Windows 版 v2.0（C# WPF）基于 FileFlipper（MIT 开源协议）融合 Mac 版 FileConverter 的设计与交互开发而来，UI 与操作逻辑对齐 macOS 版：紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘；按住 Shift 拖拽文件展开格式轮盘，Ctrl+Shift 展开工具轮盘，松手未投放自动隐藏。
+Windows 版 v2.0（C# WPF）基于 FileFlipper（MIT 开源协议）融合 Mac 版 FileConverter 的设计与交互开发而来，UI 与操作逻辑对齐 macOS 版：紫粉黄三色渐变光晕、磨砂半透明气泡圆盘轮盘；拖拽文件到屏幕顶部中央的悬浮轮盘即展开格式圆盘（默认任意拖拽触发，可改为 Shift / Alt / Alt + Shift），按住 Ctrl 可切换到工具轮盘，松手未投放自动隐藏。
 
 - **功能**：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转（docx / md / txt / html / rtf 等）、PPTX→PDF / Markdown、XLSX→PDF、音视频压缩与转码、OCR 文字识别、一键抠图；图片工具（裁剪 / 压缩 / 清理元数据 / 缩放 50% / 旋转 / 黑白 / 去背景）、PDF 工具（合并 / 压缩 / 清理 / 旋转 / 拆分）
-- **下载（Release）**：[v2.0-windows 已发布](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows)，下载 `FileConverter-2.0-windows.exe`（自包含单文件，约 170 MB），解压后双击即可运行
-- **使用**：解压后双击 `FileConverter.exe` 即可运行，自包含单文件，无需安装 .NET；托盘常驻，也可右键文件 →「发送到」→ FileConverter
+- **下载（Release）**：[v2.0-windows 已发布](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows)，下载 `FileConverter-2.0-windows.exe`（自包含单文件，约 170 MB），双击即可运行，无需安装
+- **详细使用方法**：见上文《使用方法 · Windows 版》，涵盖下载运行、托盘与设置入口、触发方式、任务栏最小化与退出、LibreOffice 可选安装
 - **系统要求**：Windows 10 / 11（64 位）
 
 > 首次运行时 Windows SmartScreen 可能提示「Windows 已保护你的电脑」，点击「更多信息」→「仍要运行」即可。应用未签名，属正常提示；如不放心可先核对下载文件的哈希值。
@@ -234,22 +337,83 @@ The app will be added to the security exceptions and can be opened normally afte
 
 #### Drag Modifier Setting (Important)
 
-In the macOS app, **"Drag Modifier" → "Conversion Wheel"** controls **which modifier key combination you must hold while dragging files** to expand the conversion wheel at the cursor. The default is **Option ( ⌥ )**; other combinations (Shift, Command, Control, …) can be selected from the dropdown.
+**"Drag Modifier"** decides **which key you must hold while dragging files** to summon the conversion wheel. Both the macOS and the Windows build default to **no modifier** (the wheel appears on any drag).
 
-**We recommend keeping the default (or any modifier) — do not set it to "No modifier":**
+**We recommend switching to a modifier (Shift / Option / Alt):**
 
 - With a modifier configured, ordinary drag-and-drop (e.g. into Finder, browsers, chat apps) is completely unaffected — the wheel only appears when you hold the modifier while dragging;
 - If set to "No modifier", the floating wheel will intercept **every** file dragged through its hotspot, so files may get captured by the wheel instead of being dropped into **other apps** (e.g. attaching files in WeChat / email).
 
-> macOS: Main window → Settings → Drag Modifier → Conversion Wheel → pick a modifier combination. Windows version is fixed: hold **Shift** for the format wheel, **Ctrl+Shift** for the tool wheel.
+> **macOS**: Main window → Settings → General → Drag Modifier → Conversion Wheel — choose No modifier / Shift / Option / Option + Shift.
+> **Windows**: Settings window → Drag Modifier (or tray → Wheel Trigger…) — choose Any drag (no modifier) / Shift / Alt / Alt + Shift; hold **Ctrl** while dragging to switch to the tool wheel.
 
-#### Usage
+#### Usage (macOS)
 
-1. After launching, the main window opens and a floating dot appears on the desktop.
-2. **Open main window**: Menu bar → File → New Window.
-3. Drag a file onto the floating ball to expand the conversion wheel.
-4. Pick a target format or tool to convert.
-5. Click the floating ball after conversion to open the output folder.
+The macOS and Windows builds follow the same logic: **drag files in → pick a format or tool on the wheel → the converted file is saved next to the original**. This section covers the macOS build; see "Windows Version" below for the Windows build.
+
+##### 1. Getting started
+
+1. Launch `FileConverter.app` — the main window opens automatically and a small floating dot (the floating ball) appears on the desktop.
+2. Re-open the main window any time: click the **Dock icon**, or use the menu bar **File → New Window**.
+3. The toolbar of the main window (left to right): donate, dependency check (wrench), settings (gear), feedback, check for updates; the body holds the drop area and the conversion task list.
+4. Each finished task offers a **Reveal in Finder** button.
+5. Closing the main window does not quit the app — the floating ball and global drag monitoring keep running in the background.
+
+##### 2. Dragging & the wheel
+
+1. Start dragging one or more files in Finder, hold the configured drag modifier (default: none, i.e. no key needed) and move them onto the floating ball — it expands into the **format wheel**.
+2. The wheel lists the target formats available for the dragged file type (image / document / audio & video / PDF …). Hover to highlight, then release the mouse to convert.
+3. Drag the files away from the wheel before releasing — the wheel collapses and nothing happens.
+
+##### 3. Sub-menus (tools & merge)
+
+- **Image tools**: with images dragged in, leave the cursor on a format bubble for about 0.5 s to open the image tool ring — compress, clean metadata, edit (colors), annotate (watermark), add background, crop, redact.
+- **PDF merge**: drag in several PDFs and hover the merge block to open the merge panel; drag in more files to append to the queue (an inline hint appears when fewer than 2 files are queued).
+- **Image merge**: drag in several images and choose "merge to PDF / PPTX" to open the merge panel.
+
+> A light haptic tick fires as the cursor crosses wheel buttons — this is the intended feedback.
+
+##### 4. Drag Modifier setting
+
+- Path: Main window → Settings → General → **Drag Modifier → Conversion Wheel**
+- Options: No modifier (default) / Shift / Option / Option + Shift
+- With "No modifier", any drag entering the hotspot expands the wheel.
+- We recommend Shift / Option …: ordinary drag-and-drop (Finder, browsers, chat apps) is unaffected, and the wheel only appears while the modifier is held.
+- The same Settings page also offers language, appearance (glass / solid), launch at login, sound feedback and hide Dock icon. The **Formats** tab sets per-extension options (JPG / PNG / WEBP / HEIC / TIFF / BMP / PDF / MP3 / MP4 / DOCX / TXT) for quality, metadata preservation and image compression size.
+
+##### 5. Output location
+
+- Converted files are saved **next to the original**, keeping the original name and changing only the extension (`report.docx` → `report.pdf`).
+- If a file with that name already exists, a number is appended (`report (1).pdf`) — **nothing is ever overwritten**.
+- After a conversion, click the floating ball or use **Reveal in Finder** in the task list to open the output folder.
+
+##### 6. Auto update
+
+- The app checks GitHub Releases at launch: if a newer version exists it offers "Download update / Later"; when already up to date it stays silent.
+- Manual check: Settings → About → Check for Updates.
+- Update flow: download the zip asset whose name contains `macOS` → unzip → replace the current app in place (your install location is preserved) → relaunch automatically.
+
+##### 7. Troubleshooting
+
+| Symptom | What to do |
+| --- | --- |
+| "Apple cannot check it for malicious software" on first launch | See *First Launch Notice* above — Control-click the icon → Open; or System Settings → Privacy & Security → Open Anyway |
+| No wheel appears while dragging | Make sure the app is running (main window or Dock icon) and that you hold the configured drag modifier |
+| Audio/video conversion fails | Install `ffmpeg` — one-click from the dependency checker |
+| WebP output fails | Install `cwebp` |
+| Office documents convert poorly | Install LibreOffice (drives the high-fidelity headless conversion) |
+| PDF → Word fails | Install the Python package `pdf2docx` |
+| Not sure which dependency is missing | Click the wrench button in the main window to open the dependency checker, then click "Install missing dependencies" (Homebrew required) |
+| No Dock icon | "Hide Dock icon" is enabled — open the main window via menu bar File → New Window, or turn the option off |
+| "Launch at login" fails | Move the app into the `/Applications` folder first |
+
+Manual installation:
+
+```bash
+brew install ffmpeg webp                  # audio/video transcoding + WebP
+brew install --cask libreoffice           # high-fidelity Office conversion
+python3 -m pip install --user pdf2docx    # PDF → Word
+```
 
 #### Support & Feedback
 
@@ -258,12 +422,39 @@ In the macOS app, **"Drag Modifier" → "Conversion Wheel"** controls **which mo
 
 #### Windows Version
 
-As a FileConverter flavor running on Windows, it is built on FileFlipper (MIT) fused with the design and interaction of the macOS FileConverter, implemented in C# WPF, with UI and interaction mimicking the macOS version: purple-pink-yellow gradient glow, frosted translucent bubble picker wheel, and a dark frosted-glass interface. All conversions also complete locally — nothing is uploaded to the cloud, keeping your files private. Hold Shift while dragging files to open the format wheel, Ctrl+Shift for the tool wheel; it auto-hides when you release without dropping.
+As a FileConverter flavor running on Windows (**v2.0**, C# WPF), it is built on FileFlipper (MIT) fused with the design and interaction of the macOS FileConverter, with UI and interaction aligned to the macOS version: purple-pink-yellow gradient glow, frosted translucent bubble picker wheel, and a dark frosted-glass interface. All conversions also complete locally — nothing is uploaded to the cloud, keeping your files private.
 
 - **Features**: image conversion, PDF (to images / text / Markdown / Word), document conversion (docx / md / txt / html / rtf …), PPTX→PDF / Markdown, XLSX→PDF, audio/video compression and transcoding, OCR text recognition, one-click background removal; image tools (crop / compress / clean metadata / 50% resize / rotate / B&W / cutout), PDF tools (merge / compress / clean / rotate / split)
-- **Release download**: The package has been removed; a new build (icon and UI aligned with the macOS version) will be re-released soon
-- **Usage**: Unzip and double-click `FileConverter.exe` — self-contained, no .NET install needed; lives in the notification area, or right-click a file → "Send to" → FileConverter
+- **Release download**: [v2.0-windows](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows) — `FileConverter-2.0-windows.exe` (self-contained single file, ~170 MB), just double-click to run, no installation needed
 - **System requirements**: Windows 10 / 11 (64-bit)
+
+##### Getting started (Windows)
+
+1. Download `FileConverter-2.0-windows.exe` from [Releases](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/tag/v2.0-windows) (self-contained single file, ~170 MB).
+2. Put it in any folder and **double-click to run** — no installation and no .NET runtime required.
+3. On first run Windows SmartScreen may show "Windows protected your PC" — click "More info" → "Run anyway".
+4. The first launch shows a short tutorial and automatically adds FileConverter to the Explorer right-click **"Send to"** menu.
+
+##### Tray & Settings (Windows)
+
+- FileConverter lives in the **notification area (tray)** in the bottom-right corner; closing windows does not quit it.
+- Open Settings by **double-clicking the tray icon**, or **right-click the tray icon → Settings…**.
+- The Settings window is also the main window and keeps a taskbar icon while running.
+- Tray menu: Settings… / Enabled / Start with Windows / Show in "Send to" Menu / Wheel Trigger… / How to Use… / About FileConverter / Quit FileConverter.
+
+##### Triggering the wheel (Windows)
+
+1. Start dragging a file in File Explorer — a small wheel appears at the **top centre** of the screen; bring the file near it and it expands into the full format circle.
+2. Any drag shows the wheel by default; to require **Shift / Alt / Alt + Shift**, switch it in Settings → Drag Modifier (or tray → Wheel Trigger…).
+3. **Hold Ctrl while dragging** to switch to the **tool wheel** (crop, compress, cut out, rotate, merge, split …, depending on the file type).
+4. Click a bubble to pick a target format, press **Esc** to close, or drag the files away and release to cancel — nothing happens.
+5. You can also right-click files → "Send to" → FileConverter (on Windows 11 choose "Show more options" first).
+
+##### Taskbar, quitting & LibreOffice (Windows)
+
+- The Settings window is the main window and always keeps a taskbar icon; the **✕ button only hides it** to the tray.
+- Quit: right-click the tray icon → "Quit FileConverter". If the UI is unresponsive, press **Ctrl+Shift+Esc**, find FileConverter in Task Manager and choose "End task".
+- **LibreOffice (optional, better fidelity)**: document → PDF conversions go through LibreOffice headless when it is installed; otherwise FileConverter falls back to its built-in renderer and hints "Install LibreOffice for a higher-fidelity PDF" after converting. Install it from [libreoffice.org](https://www.libreoffice.org/download/download-libreoffice/) if you want the higher fidelity — no extra configuration is needed.
 
 > On first run, Windows SmartScreen may show "Windows protected your PC" — click "More info" → "Run anyway". The app is unsigned; this is a normal prompt. You may verify the file hash if concerned.
 
