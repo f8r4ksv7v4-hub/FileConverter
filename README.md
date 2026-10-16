@@ -72,6 +72,11 @@ macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 
 
 ## 更新记录
 
+### v3.2（2026-10-16）
+- 修复依赖检测与安装缺陷：依赖检查面板不再卡在刷新状态；重启应用后不再误报 pdf2docx 等依赖缺失
+- 依赖探测更可靠：优先使用 Homebrew Python（/opt/homebrew/bin/python3），导入检测超时由 3 秒提升至 20 秒，支持多解释器候选逐个探测，并明确区分「解释器不可用」与「依赖包未安装」
+- 修复本地化表重复键导致的启动崩溃
+
 ### v2.0-windows（2026-10-11）
 - Windows 版全面重构（C# WPF）：放弃 Electron 方案，基于 FileFlipper（MIT）融合 Mac 版 FileConverter 的设计与交互，以 C# WPF 重写，UI 对齐 macOS 版视觉（紫粉黄三色渐变光晕、磨砂半透明气泡、圆盘轮盘），拖拽显隐逻辑与 Mac 版一致
 - 转换能力大幅增强：图片互转、PDF（转图 / 文本 / Markdown / Word）、文档互转、PPT→PDF/MD、表格→PDF、音视频压缩与转码、OCR 文字识别、一键抠图，以及图片 / PDF 工具（裁剪、压缩、清理、旋转、拆分、合并）
@@ -277,6 +282,11 @@ FileConverter is a local file conversion tool for macOS, an original design buil
 </p>
 
 #### Changelog
+
+##### v3.2 (2026-10-16)
+- Fixed the dependency detection and installation issues: the dependency panel no longer gets stuck refreshing, and missing packages (e.g. pdf2docx) are no longer falsely reported after relaunching the app.
+- More reliable interpreter probing: prefers Homebrew Python (`/opt/homebrew/bin/python3`), raises the import check timeout from 3s to 20s, probes multiple interpreter candidates, and distinguishes "interpreter unavailable" from "package not installed".
+- Fixed a launch crash caused by duplicated keys in the localization table.
 
 ##### v2.11 (2026-10-10)
 - docx→PDF conversion returns to stable output: removed the over-processing of embedded screenshot underline, cover page and underlines render correctly again.
