@@ -339,6 +339,30 @@ FileConverter is a cross-platform file conversion tool with two native builds �
   <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-06.jpg" alt="More features" width="400">
 </p>
 
+### First Launch Notice (Important)
+
+The app is signed with an **ad-hoc signature** (not notarized with an Apple Developer ID). On first launch, macOS Gatekeeper may block it with a "can't be opened" or "unidentified developer" warning. This is a normal prompt for unnotarized apps.
+
+**Option 1 (Recommended): Open via right-click**
+
+1. Locate `FileConverter.app` in Finder (do not use Launchpad).
+2. **Control-click** (or right-click) the app icon.
+3. Choose **Open** from the context menu.
+4. Click **Open** again to confirm.
+
+The app will then be saved as a security exception and can be launched normally afterward.
+
+**Option 2: Allow in System Settings**
+
+1. Try double-clicking the app once (it will be blocked).
+2. Open **System Settings → Privacy & Security**, scroll to the **Security** section.
+3. Click the **Open Anyway** button (available within one hour after the blocked attempt).
+4. Enter your password and click **OK**.
+
+The app will be added to the security exceptions and can be opened normally afterwards.
+
+> These steps follow [Apple's official documentation](https://support.apple.com/zh-cn/guide/mac-help/mchleab3a043/mac). If you have any security concerns, feel free to report them via Issues.
+
 ### Changelog
 
 #### v3.3 (2026-10-28)
@@ -399,30 +423,6 @@ See [Releases](https://github.com/f8r4ksv7v4-hub/FileConverter/releases) for ear
 - **Bilingual UI**: Switch between 中文 and English instantly.
 - **Floating Ball Interaction**: A desktop floating dot expands into a conversion wheel when you drag a convertible file onto it.
 - **Auto Update**: Automatically checks GitHub Releases and installs new versions.
-
-### First Launch Notice (Important)
-
-The app is signed with an **ad-hoc signature** (not notarized with an Apple Developer ID). On first launch, macOS Gatekeeper may block it with a "can't be opened" or "unidentified developer" warning. This is a normal prompt for unnotarized apps.
-
-**Option 1 (Recommended): Open via right-click**
-
-1. Locate `FileConverter.app` in Finder (do not use Launchpad).
-2. **Control-click** (or right-click) the app icon.
-3. Choose **Open** from the context menu.
-4. Click **Open** again to confirm.
-
-The app will then be saved as a security exception and can be launched normally afterward.
-
-**Option 2: Allow in System Settings**
-
-1. Try double-clicking the app once (it will be blocked).
-2. Open **System Settings → Privacy & Security**, scroll to the **Security** section.
-3. Click the **Open Anyway** button (available within one hour after the blocked attempt).
-4. Enter your password and click **OK**.
-
-The app will be added to the security exceptions and can be opened normally afterwards.
-
-> These steps follow [Apple's official documentation](https://support.apple.com/zh-cn/guide/mac-help/mchleab3a043/mac). If you have any security concerns, feel free to report them via Issues.
 
 ### Drag Modifier Setting (Important)
 
