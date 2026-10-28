@@ -323,8 +323,20 @@ FileConverter is a cross-platform file conversion tool with two native builds �
 
 - **中文文档**: [中文文档](#中文文档)
 
+### Screenshots
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-01.jpg" alt="FileConverter" width="720">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-02.jpg" alt="Feature overview" width="400">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-04.jpg" alt="Image tools in action" width="400">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-05.jpg" alt="Document conversion demo" width="400">
+  <img src="https://raw.githubusercontent.com/f8r4ksv7v4-hub/FileConverter/main/images/screenshot-06.jpg" alt="More features" width="400">
 </p>
 
 ### Changelog
