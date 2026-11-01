@@ -94,6 +94,11 @@ macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 
 
 ### 更新记录
 
+#### v3.4（2026-11-01）
+- 修复应用闲置数日后「按住 Shift 拖文件唤不出轮盘」：修饰键状态改用系统会话级实时状态读取，不再依赖只有在应用收到键盘事件时才刷新的进程级缓存（连续运行 4 天实测，旧逻辑下修饰键判定命中率约 0.04%，现为每次拖拽均命中）
+- 修复拖动应用窗口时的误判连带失效：按下瞬间不再把轮盘自身的透明置顶窗记为「源窗口」，避免拖拽开始时的面板重排被误判为「正在拖动窗口」从而屏蔽本次拖拽
+- 拖入轮盘时的修饰键校验同步改为会话级读取，与全局监测口径一致
+
 #### v3.3（2026-10-28）
 - 修复「登录时启动」开关重启后自动复位：开关状态改为持久化写入偏好，并以系统登录项的实际状态为准回读，启动后自动校正；注册动作移至应用完成启动后执行，后台静默启动也能生效
 - 新增安装位置校验：从下载目录、桌面或外接磁盘运行时会提示移入「应用程序」，避免登录项绑定在会被移动的路径上
@@ -297,7 +302,8 @@ Windows 版 v2.0（C# WPF）基于 FileFlipper（MIT 开源协议）融合 Mac �
 
 | 版本 | 安装包 | 平台 | 大小 | 下载直链 |
 | --- | --- | --- | --- | --- |
-| **3.3**（推荐） | `FileConverter-3.3-macOS.zip` | macOS | 约 2.9 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.3/FileConverter-3.3-macOS.zip) |
+| **3.4**（推荐） | `FileConverter-3.4-macOS.zip` | macOS | 约 2.9 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.4/FileConverter-3.4-macOS.zip) |
+| 3.3 | `FileConverter-3.3-macOS.zip` | macOS | 约 2.9 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.3/FileConverter-3.3-macOS.zip) |
 | 2.0 | `FileConverter-2.0-windows.exe` | Windows | 约 170 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v2.0-windows/FileConverter-2.0-windows.exe) |
 
 全部版本与更新日志见 [Releases](https://github.com/f8r4ksv7v4-hub/FileConverter/releases) 页面。macOS 版首次打开会触发 Gatekeeper 提示，处理方式见上文《首次安装提示》。
@@ -364,6 +370,11 @@ The app will be added to the security exceptions and can be opened normally afte
 > These steps follow [Apple's official documentation](https://support.apple.com/zh-cn/guide/mac-help/mchleab3a043/mac). If you have any security concerns, feel free to report them via Issues.
 
 ### Changelog
+
+#### v3.4 (2026-11-01)
+- Fixed the wheel not appearing when dragging files with Shift held after the app had been idle for a few days: modifier state is now read from the system-wide session state instead of the per-process cache that only refreshes when the app receives keyboard events (measured over a 4-day run, the old check matched about 0.04% of ticks; it now matches on every drag).
+- Fixed the collateral failure from window-drag misdetection: the wheel's own transparent always-on-top window is no longer recorded as the drag source window when the mouse goes down, so the panel repositioning at drag start is not mistaken for "the user is dragging a window" and no longer suppresses the drag.
+- The modifier check on drop-into-wheel now reads the same session-level state, keeping one consistent source of truth.
 
 #### v3.3 (2026-10-28)
 - Fixed "Launch at login" resetting itself after a restart: the toggle is now persisted to preferences and re-read from the actual login-item state on launch; registration is deferred until the app finishes launching, so silent background starts work too.
@@ -553,7 +564,8 @@ As a FileConverter flavor running on Windows (**v2.0**, C# WPF), it is built on 
 
 | Version | Package | Platform | Size | Direct link |
 | --- | --- | --- | --- | --- |
-| **3.3** (recommended) | `FileConverter-3.3-macOS.zip` | macOS | ~2.9 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.3/FileConverter-3.3-macOS.zip) |
+| **3.4** (recommended) | `FileConverter-3.4-macOS.zip` | macOS | ~2.9 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.4/FileConverter-3.4-macOS.zip) |
+| 3.3 | `FileConverter-3.3-macOS.zip` | macOS | ~2.9 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.3/FileConverter-3.3-macOS.zip) |
 | 2.0 | `FileConverter-2.0-windows.exe` | Windows | ~170 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v2.0-windows/FileConverter-2.0-windows.exe) |
 
 All versions and full release notes live on the [Releases](https://github.com/f8r4ksv7v4-hub/FileConverter/releases) page. On first launch the macOS build is stopped by Gatekeeper; see *First Launch Notice* above.
