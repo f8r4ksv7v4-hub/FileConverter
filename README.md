@@ -94,6 +94,14 @@ macOS 版的文档类转换（如 docx→PDF 高保真排版、Office 文档转 
 
 ### 更新记录
 
+#### v3.7（2026-11-06）
+- 根治「闲置一段时间后按住 Shift 拖文件唤不出轮盘」：拖拽触发判定改为多源融合（系统会话级修饰键状态、事件流水账、后台探测快照、HID 层修饰键状态），任一来源确认即可命中，不再依赖单一来源
+- 新增事件流水账：左键按下与修饰键变化在事件到达时立即记账，即使其他来源瞬时失联，也能在拖拽起始那一刻完成判定
+- 全局监听器与事件 tap 每 20 分钟无条件重建，避免系统静默回收权限或禁用导致长时间失效
+- 拖拽探测完全移出主线程：由后台队列产出快照、主线程只读取最新代次，消除跨进程查询阻塞主线程 RunLoop 导致的心跳停摆
+- 修饰键状态增加 HID 层备份读取，补齐会话层偶发丢失 Shift 的缺口
+- 实测：闲置后首次按住 Shift 拖入文件即可稳定唤出轮盘
+
 #### v3.4（2026-11-01）
 - 修复应用闲置数日后「按住 Shift 拖文件唤不出轮盘」：修饰键状态改用系统会话级实时状态读取，不再依赖只有在应用收到键盘事件时才刷新的进程级缓存（连续运行 4 天实测，旧逻辑下修饰键判定命中率约 0.04%，现为每次拖拽均命中）
 - 修复拖动应用窗口时的误判连带失效：按下瞬间不再把轮盘自身的透明置顶窗记为「源窗口」，避免拖拽开始时的面板重排被误判为「正在拖动窗口」从而屏蔽本次拖拽
@@ -302,7 +310,8 @@ Windows 版 v2.0（C# WPF）基于 FileFlipper（MIT 开源协议）融合 Mac �
 
 | 版本 | 安装包 | 平台 | 大小 | 下载直链 |
 | --- | --- | --- | --- | --- |
-| **3.4**（推荐） | `FileConverter-3.4-macOS.zip` | macOS | 约 2.9 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.4/FileConverter-3.4-macOS.zip) |
+| **3.7**（推荐） | `FileConverter-3.7-macOS.zip` | macOS | 约 3.0 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.7/FileConverter-3.7-macOS.zip) |
+| 3.4 | `FileConverter-3.4-macOS.zip` | macOS | 约 2.9 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.4/FileConverter-3.4-macOS.zip) |
 | 3.3 | `FileConverter-3.3-macOS.zip` | macOS | 约 2.9 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.3/FileConverter-3.3-macOS.zip) |
 | 2.0 | `FileConverter-2.0-windows.exe` | Windows | 约 170 MB | [下载](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v2.0-windows/FileConverter-2.0-windows.exe) |
 
@@ -370,6 +379,14 @@ The app will be added to the security exceptions and can be opened normally afte
 > These steps follow [Apple's official documentation](https://support.apple.com/zh-cn/guide/mac-help/mchleab3a043/mac). If you have any security concerns, feel free to report them via Issues.
 
 ### Changelog
+
+#### v3.7 (2026-11-06)
+- Root-caused "the wheel does not appear when dragging files with Shift held after a period of idleness": drag detection now fuses multiple sources (session-wide modifier state, an event ledger, background probe snapshots and the HID-level modifier state), so a single confirming source is enough and no longer depends on one channel.
+- Added an event ledger: left-button downs and modifier changes are recorded the moment the event arrives, so the decision still resolves at the instant a drag starts even if other sources drop out momentarily.
+- The global monitor and event tap are rebuilt unconditionally every 20 minutes, so they cannot stay dead for long after the system silently revokes or disables them.
+- Drag probing is fully off the main thread: a background queue produces snapshots and the main thread only reads the latest generation, removing any chance of a cross-process query blocking the main RunLoop and stalling the heartbeat.
+- Modifier state now also falls back to the HID layer, covering the occasional loss of Shift at the session layer.
+- Verified: after idling, the first Shift-drag reliably brings up the wheel.
 
 #### v3.4 (2026-11-01)
 - Fixed the wheel not appearing when dragging files with Shift held after the app had been idle for a few days: modifier state is now read from the system-wide session state instead of the per-process cache that only refreshes when the app receives keyboard events (measured over a 4-day run, the old check matched about 0.04% of ticks; it now matches on every drag).
@@ -564,7 +581,8 @@ As a FileConverter flavor running on Windows (**v2.0**, C# WPF), it is built on 
 
 | Version | Package | Platform | Size | Direct link |
 | --- | --- | --- | --- | --- |
-| **3.4** (recommended) | `FileConverter-3.4-macOS.zip` | macOS | ~2.9 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.4/FileConverter-3.4-macOS.zip) |
+| **3.7** (recommended) | `FileConverter-3.7-macOS.zip` | macOS | ~3.0 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.7/FileConverter-3.7-macOS.zip) |
+| 3.4 | `FileConverter-3.4-macOS.zip` | macOS | ~2.9 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.4/FileConverter-3.4-macOS.zip) |
 | 3.3 | `FileConverter-3.3-macOS.zip` | macOS | ~2.9 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v3.3/FileConverter-3.3-macOS.zip) |
 | 2.0 | `FileConverter-2.0-windows.exe` | Windows | ~170 MB | [Download](https://github.com/f8r4ksv7v4-hub/FileConverter/releases/download/v2.0-windows/FileConverter-2.0-windows.exe) |
 
